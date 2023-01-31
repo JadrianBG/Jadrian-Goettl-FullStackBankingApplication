@@ -11,8 +11,8 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
     dal.find(req.params.email).
         then((users) => {
             if(users.length > 0){
-                console.log('User already in exists');
-                res.send('User already in exists');    
+                console.log(user);
+                res.send(user);    
             }
             else{
                 dal.create(req.params.name,req.params.email,req.params.password).
@@ -25,7 +25,7 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
 });
 
  
-app.get('/localhost:27015/account/login/:email/:password', function (req, res) {
+app.get('/account/login/:email/:password', function (req, res) {
     dal.findOne(req.params.email).
         then((user) => {
         console.log("index file");
